@@ -1,0 +1,88 @@
+@page "/weapons"
+@using System.Text.Json
+@inject HttpClient Http
+
+<PageTitle>Characters</PageTitle>
+
+<h1>Character List</h1>
+
+@if (loading)
+{
+    <p>LOADING. . .</p>
+}
+@if (error)
+{
+    <p>ERROR!</p>
+    <p>@errormsg</p>
+}
+@if (!loading && !error)
+{
+    @foreach (var weapon in weapons)
+    {
+        <div class="card">
+    <img src="https://api.genshin.dev/weapons/@cureName(weapon.name)/icon" class="card-img-top" alt="weapon icon">
+    <div class="card-body">
+        <h5 class="card-title">@weapon.name</h5>
+        <p>
+            Type: @weapon.type<br />
+            Rarity: @weapon.rarity*<br />
+            Base Attack: @weapon.baseAttack<br />
+            Substat: @weapon.subStat<br />
+            location: @weapon.location<br />
+            Ascension Material: @weapon.ascensionMaterial<br />
+            Passive: @weapon.passiveName<br />
+            @weapon.passiveDesc
+        </p>
+    </div>
+</div>
+    }
+}
+
+<style>
+    .card {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        margin-top: 1em;
+    }
+
+    .card-img-top {
+        width: 9em;
+        height: 9em;
+    }
+</style>
+
+@code {
+    private Weapon[]? weapons;
+    private bool loading = false;
+    private bool error = false;
+    private string errormsg = "";
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        error = false;
+        try
+        {
+            var response = await Http.GetStringAsync("https://api.genshin.dev/weapons/all");
+            weapons = JsonSerializer.Deserialize<Weapon[]>(response);
+        }
+        catch (Exception e)
+        {
+            errormsg = "" + e;
+            error = true;
+        }
+        finally
+        {
+            loading = false;
+        }
+        await base.OnInitializedAsync();
+    }
+
+    private String cureName(string name)
+    {
+        name = name.ToLower();
+        name = name.Replace(" ", "-");
+
+        return name;
+    }
+}
