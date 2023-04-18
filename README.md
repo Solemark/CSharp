@@ -16,7 +16,7 @@ create complex projects with a solution file:
 
 then add .csproj files to the solution:
 
-    dotnet add <./path/to/.csproj/file>
+    dotnet sln add ./path/to/.csproj
 
 project type can be:
     
