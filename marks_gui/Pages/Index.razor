@@ -4,11 +4,29 @@
 
 <h1>Marks GUI</h1>
 
-<input type="text" placeholder="Name">
-<input type="text" placeholder="Mark">
+<input @bind="inputName" type="text" placeholder="Name">
+<input @bind="inputMark" type="text" placeholder="Mark">
 <br />
-<button class="btn-primary">Submit</button>
+<button class="btn-primary" @onclick="saveUser">Submit</button>
+<ul>
+    @foreach(Mark student in students)
+    {
+        <li>Name: @student.studentName Mark: @student.studentMark</li>
+    }
+</ul>
 
 @code {
-    private Mark[] name;
+    private List<Mark> students = new List<Mark>();
+    private string? inputName {get; set;}
+    private string? inputMark {get; set;}
+
+    private void saveUser()
+    {
+        Mark mark = new Mark();
+        mark.studentName = inputName;
+        mark.studentMark = Int32.Parse(inputMark);
+        students.Add(mark);
+        inputName = "";
+        inputMark = "";
+    }
 }
