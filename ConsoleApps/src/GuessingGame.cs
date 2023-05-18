@@ -9,7 +9,7 @@ public class GuessingGame
     {
         const int maxNumber = 100;
         int number = getNumber(maxNumber);
-        int input = 0;
+        int? input = 0;
 
         Console.WriteLine(String.Format("Enter a number between 1 & {0}", maxNumber));
 
