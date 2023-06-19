@@ -5,7 +5,7 @@ public class Mark
     public string? studentName { get; set; }
     public int? studentMark { get; set; }
 
-    public string getGrade(int mark)
+    public string getGrade(int? mark)
     {
         if (mark < 50)
             return "F";

@@ -9,22 +9,22 @@
 <br />
 <button class="btn-primary" @onclick="saveUser">Submit</button>
 <ul>
-    @foreach(Mark student in students)
+    @foreach (Mark student in students)
     {
-        <li>Name: @student.studentName Mark: @student.studentMark</li>
+        <li>Name: @student.studentName Grade: @student.getGrade(student.studentMark)</li>
     }
 </ul>
 
 @code {
     private List<Mark> students = new List<Mark>();
-    private string? inputName {get; set;}
-    private string? inputMark {get; set;}
+    private string? inputName { get; set; }
+    private string? inputMark { get; set; }
 
     private void saveUser()
     {
         Mark mark = new Mark();
         mark.studentName = inputName;
-        mark.studentMark = Int32.Parse(inputMark);
+        mark.studentMark = Int32.Parse(inputMark ?? "0");
         students.Add(mark);
         inputName = "";
         inputMark = "";
