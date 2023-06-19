@@ -17,7 +17,7 @@
 }
 @if (!loading && !error)
 {
-    @foreach (var artifact in artifacts)
+    @foreach (var artifact in artifacts!)
     {
         <div class="card">
     <img src="https://api.genshin.dev/artifacts/@cureName(artifact.name)/circlet-of-logos" class="card-img-top"
@@ -25,7 +25,7 @@
     <div class="card-body">
         <h5 class="card-title">@artifact.name</h5>
         Rarity: @artifact.rarity*<br />
-        @if (checkArtifact(artifact.name))
+        @if (checkArtifact(artifact.name!))
                 {
                     <p>
                         2p: @artifact.two_piece_bonus<br />
@@ -83,7 +83,7 @@
         await base.OnInitializedAsync();
     }
 
-    private Boolean checkArtifact(string name)
+    private Boolean checkArtifact(string? name)
     {
         switch (name)
         {
@@ -102,9 +102,9 @@
         }
     }
 
-    private String cureName(string name)
+    private String cureName(string? name)
     {
-        name = name.ToLower();
+        name = name!.ToLower();
         name = name.Replace(" ", "-");
         name = name.Replace("'", "-");
         return name;

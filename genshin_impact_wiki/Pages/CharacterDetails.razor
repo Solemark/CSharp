@@ -15,8 +15,8 @@
 }
 @if (!loading && !error)
 {
-    <PageTitle>Character - @character.name</PageTitle>
-    <h1>@character.name</h1>
+    <PageTitle>Character - @character!.name</PageTitle>
+    <h1>@character!.name</h1>
 
     <div class="card">
         <div class="flexbox">
@@ -32,28 +32,28 @@
                     Affiliation: @character.affiliation<br />
                     Rarity: @character.rarity*<br />
                     Constellation: @character.constellation<br />
-                    Birthday: @cureBirthday(character.birthday)<br />
+                    Birthday: @cureBirthday(character.birthday!)<br />
                     @character.description
                 </p>
             </div>
         </div>
         <div class="details">
             <h2>Skills</h2>
-            @foreach (var skill in character.skillTalents)
+            @foreach (var skill in character.skillTalents!)
             {
                 <h4>@skill.name</h4>
                 <p>@skill.unlock</p>
                 <p>@skill.description</p>
             }
             <h2>Passives</h2>
-            @foreach (var skill in character.passiveTalents)
+            @foreach (var skill in character.passiveTalents!)
             {
                 <h4>@skill.name</h4>
                 <p>@skill.unlock</p>
                 <p>@skill.description</p>
             }
             <h2>Constellations</h2>
-            @foreach (var skill in character.constellations)
+            @foreach (var skill in character.constellations!)
             {
                 <h4>@skill.name</h4>
                 <p>@skill.unlock</p>
@@ -83,7 +83,7 @@
 
 @code {
     [Parameter]
-    public string input { get; set; }
+    public string? input { get; set; }
     private Character? character;
     private bool loading = false;
     private bool error = false;
@@ -110,7 +110,7 @@
         await base.OnInitializedAsync();
     }
 
-    private String checkTraveler(string name)
+    private String checkTraveler(string? name)
     {
         if (name == "Traveler")
         {
@@ -122,9 +122,9 @@
         }
     }
 
-    private String cureName(string name, string vision)
+    private String cureName(string? name, string? vision)
     {
-        name = name.ToLower();
+        name = name!.ToLower();
         name = name.Replace(" ", "-");
 
         switch (name)
@@ -140,15 +140,15 @@
             case "kujou-sara":
                 return "sara";
             case "traveler":
-                return "traveler" + "-" + vision.ToLower();
+                return "traveler" + "-" + vision!.ToLower();
             default:
                 return name;
         }
     }
 
-    private String cureBirthday(string birthday)
+    private String cureBirthday(string? birthday)
     {
-        string[] birthdays = birthday.Split("-");
+        string[] birthdays = birthday!.Split("-");
         birthday = birthdays[birthdays.Length - 1] + "/" + birthdays[birthdays.Length - 2];
 
         return birthday;

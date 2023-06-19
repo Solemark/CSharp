@@ -17,7 +17,7 @@
 }
 @if (!loading && !error)
 {
-    @foreach (var weapon in weapons)
+    @foreach (Weapon weapon in weapons!)
     {
         <div class="card">
     <img src="https://api.genshin.dev/weapons/@cureName(weapon.name)/icon" class="card-img-top" alt="weapon icon">
@@ -78,9 +78,9 @@
         await base.OnInitializedAsync();
     }
 
-    private String cureName(string name)
+    private String cureName(string? name)
     {
-        name = name.ToLower();
+        name = name!.ToLower();
         name = name.Replace(" ", "-");
 
         return name;
