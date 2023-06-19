@@ -9,14 +9,14 @@ public class GuessingGame
     {
         const int maxNumber = 100;
         int number = getNumber(maxNumber);
-        int? input = 0;
+        int input = 0;
 
         Console.WriteLine(String.Format("Enter a number between 1 & {0}", maxNumber));
 
         while (true)
         {
             Console.WriteLine("Enter your guess: ");
-            input = Int32.Parse(Console.ReadLine());
+            input = Int32.Parse(Console.ReadLine() ?? "");
             if (input == number)
             {
                 Console.WriteLine("You win!");
