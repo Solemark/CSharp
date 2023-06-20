@@ -5,6 +5,7 @@ public class GuessingGame
     {
         return Random.Shared.Next(1, maxNumber + 1);
     }
+
     public static void cli()
     {
         const int maxNumber = 100;
