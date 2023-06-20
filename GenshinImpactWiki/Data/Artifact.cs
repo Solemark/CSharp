@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-namespace genshin_impact_wiki.Data.Models;
+namespace GenshinImpactWiki.Data.Models;
 public class Artifact
 {
     public string? name { get; set; }

@@ -1,4 +1,4 @@
-namespace genshin_impact_wiki.Data.Models;
+namespace GenshinImpactWiki.Data.Models;
 public class Character
 {
     public string? name { get; set; }
