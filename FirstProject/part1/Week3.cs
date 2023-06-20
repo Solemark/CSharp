@@ -6,7 +6,7 @@ internal class Week3
         int? grade = 0;
 
         Console.Write("Enter the student's grade (0-100)");
-        grade = Int32.Parse(Console.ReadLine());
+        grade = Int32.Parse(Console.ReadLine() ?? "0");
 
         if (grade <= 49)
             Console.WriteLine("Student has failed (F)");

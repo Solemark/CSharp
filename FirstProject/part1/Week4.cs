@@ -17,7 +17,7 @@ internal class Week4
             name = Console.ReadLine();
 
             Console.Write("Enter student mark (0-100): ");
-            mark = Int32.Parse(Console.ReadLine());
+            mark = Int32.Parse(Console.ReadLine() ?? "0");
 
             if (mark <= 49)
                 Console.WriteLine("Student has failed (F)");

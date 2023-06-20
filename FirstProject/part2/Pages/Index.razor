@@ -1,0 +1,24 @@
+﻿@page "/"
+
+<PageTitle>Mark Entry System 2.0</PageTitle>
+
+<h1>Mark Entry System 2.0</h1>
+
+<input type="text" @bind="studentName" placeholder="Student Name" aria-label="Username"><br />
+<input type="text" @bind="studentMark" placeholder="Student Mark" aria-label="mark"><br />
+<button type="button" class="btn btn-primary" @onclick="submit">Submit</button>
+<p>Average Mark: @averageMark</p>
+
+@code {
+    private string? studentName { get; set; }
+    private string? studentMark { get; set; }
+    private int i = 0;
+    private float averageMark = 0;
+    private void submit()
+    {
+        i++;
+        averageMark = (averageMark + Int32.Parse(studentMark ?? "0")) / i;
+        studentName = "";
+        studentMark = "";
+    }
+}

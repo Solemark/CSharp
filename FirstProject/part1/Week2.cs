@@ -12,7 +12,7 @@ internal class Week2
         name = Console.ReadLine();
 
         Console.Write(String.Format("Enter {0}'s mark out of {1}: ", name, max_marks));
-        mark = Int32.Parse(Console.ReadLine());
+        mark = Int32.Parse(Console.ReadLine() ?? "0");
 
         percentage = (int)((mark * 100) / max_marks);
         Console.WriteLine(String.Format("{0} recieved {1}% of total marks", name, percentage));
