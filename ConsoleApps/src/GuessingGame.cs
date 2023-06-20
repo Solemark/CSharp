@@ -17,7 +17,7 @@ public class GuessingGame
         while (true)
         {
             Console.WriteLine("Enter your guess: ");
-            input = Int32.Parse(Console.ReadLine() ?? "");
+            input = Int32.Parse(Console.ReadLine() ?? "0");
             if (input == number)
             {
                 Console.WriteLine("You win!");
