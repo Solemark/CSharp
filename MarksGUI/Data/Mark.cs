@@ -1,4 +1,4 @@
-namespace marks_gui.Data;
+namespace MarksGUI.Data;
 
 public class Mark
 {

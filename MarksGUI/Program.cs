@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using marks_gui.Data;
+using MarksGUI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
