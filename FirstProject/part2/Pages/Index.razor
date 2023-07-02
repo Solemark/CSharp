@@ -4,21 +4,35 @@
 
 <h1>Mark Entry System 2.0</h1>
 
-<input type="text" @bind="studentName" placeholder="Student Name" aria-label="Username"><br />
-<input type="text" @bind="studentMark" placeholder="Student Mark" aria-label="mark"><br />
+<input type="text" @bind="name" placeholder="Student name" aria-label="student name"><br />
+<input type="text" @bind="mark" placeholder="Student mark" aria-label="student mark"><br />
 <button type="button" class="btn btn-primary" @onclick="submit">Submit</button>
-<p>Average Mark: @averageMark</p>
+<p>Average Mark: @avgMark</p>
+<p>@error</p>
 
 @code {
-    private string? studentName { get; set; }
-    private string? studentMark { get; set; }
-    private int i = 0;
-    private float averageMark = 0;
+    private string? name { get; set; }
+    private string? mark { get; set; }
+    private string? error { get; set; }
+    private int i = 1;
+    private float avgMark = 0;
+
     private void submit()
     {
+        error = null;
+        if (name == null || name == "")
+        {
+            error = "Error! Student Name is null or empty";
+            return;
+        }
+        if (mark == null || mark == "")
+        {
+            error = "Error! Student Mark is null or empty";
+            return;
+        }
+        avgMark = (avgMark + Int32.Parse(mark ?? "0")) / i;
+        name = null;
+        mark = null;
         i++;
-        averageMark = (averageMark + Int32.Parse(studentMark ?? "0")) / i;
-        studentName = "";
-        studentMark = "";
     }
 }
