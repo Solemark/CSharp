@@ -3,7 +3,7 @@ using GenshinImpactWiki.Data.Models;
 using System.Net.Http;
 public class ArtifactService : DataService
 {
-    public async Task<Artifact[]> getArtifacts(HttpClient http)
+    public async Task<Artifact[]?> getArtifacts(HttpClient http)
     {
         Artifact[]? weapons = null;
         loading = true;
@@ -22,6 +22,6 @@ public class ArtifactService : DataService
         {
             loading = false;
         }
-        return weapons!;
+        return weapons;
     }
 }

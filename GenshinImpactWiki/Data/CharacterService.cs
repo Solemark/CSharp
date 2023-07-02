@@ -3,7 +3,7 @@ using GenshinImpactWiki.Data.Models;
 using System.Net.Http;
 public class CharacterService : DataService
 {
-    public async Task<Character[]> getCharacters(HttpClient http)
+    public async Task<Character[]?> getCharacters(HttpClient http)
     {
         Character[]? characters = null;
         loading = true;
@@ -22,10 +22,10 @@ public class CharacterService : DataService
         {
             loading = false;
         }
-        return characters!;
+        return characters;
     }
 
-    public async Task<Character> getCharacterDetails(HttpClient http, string? input)
+    public async Task<Character?> getCharacterDetails(HttpClient http, string? input)
     {
         Character? character = null;
         loading = true;
@@ -44,6 +44,6 @@ public class CharacterService : DataService
         {
             loading = false;
         }
-        return character!;
+        return character;
     }
 }
