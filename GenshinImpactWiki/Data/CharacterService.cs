@@ -33,11 +33,11 @@ public class CharacterService : DataService
         errormsg = "";
         try
         {
-            character = await http.GetFromJsonAsync<Character>("https://api.genshin.dev/characters/" + input);
+            character = await http.GetFromJsonAsync<Character>(String.Format("https://api.genshin.dev/characters/{0}", input));
         }
         catch (Exception e)
         {
-            errormsg = "" + e;
+            errormsg = String.Format("{0}", e);
             error = true;
         }
         finally
