@@ -26,5 +26,4 @@ public class Truck
     {
         return this.image;
     }
-
 }
