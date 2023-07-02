@@ -15,7 +15,7 @@ public class CharacterService : DataService
         }
         catch (Exception e)
         {
-            errormsg = "" + e;
+            errormsg = String.Format("{0}", e);
             error = true;
         }
         finally
