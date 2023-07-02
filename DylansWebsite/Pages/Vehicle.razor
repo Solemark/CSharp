@@ -1,0 +1,12 @@
+<div class="card" TItem=truck>
+    <img src=@truck!.getImage() class="card-img-top" alt=@truck.getTitle()>
+    <div class="card-body">
+        <h5 class="card-title">@truck.getTitle()</h5>
+        <p class="card-text">@truck.getDetails()</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Truck? truck { get; set; }
+}

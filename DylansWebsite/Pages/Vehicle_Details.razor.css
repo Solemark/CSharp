@@ -1,10 +1,6 @@
-.flexbox{
+.flexbox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
-}
-
-.card{
-    width: 18rem;
 }
