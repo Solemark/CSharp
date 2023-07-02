@@ -19,18 +19,23 @@ public class Character
     {
         string[] names = name.Split(" ");
         name = names[names.Length - 1];
-
+        string output = "";
         switch (name)
         {
             case "Tao":
-                return "Hu Tao";
+                output = "Hu Tao";
+                break;
             case "Shogun":
-                return "Raiden";
+                output = "Raiden";
+                break;
             case "Traveler":
-                return name + "-" + vision;
+                output = String.Format("{0}-{1}", name, vision);
+                break;
             default:
-                return name;
+                output = name;
+                break;
         }
+        return output;
     }
 
     public String checkTraveler(string? name)
@@ -49,32 +54,38 @@ public class Character
     {
         name = name!.ToLower();
         name = name.Replace(" ", "-");
-
+        string output = "";
         switch (name)
         {
             case "kamisato-ayaka":
-                return "ayaka";
+                output = "ayaka";
+                break;
             case "kaedehara-kazuha":
-                return "kazuha";
+                output = "kazuha";
+                break;
             case "sangonomiya-kokomi":
-                return "kokomi";
+                output = "kokomi";
+                break;
             case "raiden-shogun":
-                return "raiden";
+                output = "raiden";
+                break;
             case "kujou-sara":
-                return "sara";
+                output = "sara";
+                break;
             case "traveler":
-                return "traveler" + "-" + vision!.ToLower();
+                output = String.Format("traveler-{0}", vision!.ToLower());
+                break;
             default:
-                return name;
+                output = name;
+                break;
         }
+        return name;
     }
 
     public String cureBirthday(string? birthday)
     {
         string[] birthdays = birthday!.Split("-");
-        birthday = birthdays[birthdays.Length - 1] + "/" + birthdays[birthdays.Length - 2];
-
-        return birthday;
+        return String.Format("{0}/{1}", birthdays[birthdays.Length - 1], birthdays[birthdays.Length - 2]);
     }
 }
 

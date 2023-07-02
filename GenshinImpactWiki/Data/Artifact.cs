@@ -14,21 +14,29 @@ public class Artifact
 
     public Boolean checkArtifact(string? name)
     {
+        bool output = true;
         switch (name)
         {
             case "Prayers for Destiny":
-                return false;
+                output = false;
+                break;
             case "Prayers for Illumination":
-                return false;
+                output = false;
+                break;
             case "Prayers for Wisdom":
-                return false;
+                output = false;
+                break;
             case "Prayers to Springtime":
-                return false;
+                output = false;
+                break;
             case "Sacrifieur to the Firmament":
-                return false;
+                output = false;
+                break;
             default:
-                return true;
+                output = true;
+                break;
         }
+        return output;
     }
 
     public String cureName(string? name)
