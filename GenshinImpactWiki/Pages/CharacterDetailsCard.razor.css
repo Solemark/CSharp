@@ -1,0 +1,11 @@
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1em;
+}
+
+.card-img-top {
+    width: 15em;
+    height: 20em;
+}
