@@ -1,21 +1,21 @@
 @page "/artifacts"
-@using System.Text.Json
+@inject GenshinImpactWiki.Data.Services.ArtifactService data
 @inject HttpClient Http
 
 <PageTitle>Artifacts</PageTitle>
 
 <h1>Artifact List</h1>
 
-@if (loading)
+@if (data.loading)
 {
     <p>LOADING. . .</p>
 }
-@if (error)
+@if (data.error)
 {
     <p>ERROR!</p>
-    <p>@errormsg</p>
+    <p>@data.errormsg</p>
 }
-@if (!loading && !error)
+@if (!data.loading && !data.error)
 {
     @foreach (var artifact in artifacts!)
     {
@@ -25,27 +25,9 @@
 
 @code {
     private Artifact[]? artifacts;
-    private bool loading = false;
-    private bool error = false;
-    private string errormsg = "";
     protected override async Task OnInitializedAsync()
     {
-        loading = true;
-        error = false;
-        try
-        {
-            var response = await Http.GetStringAsync("https://api.genshin.dev/artifacts/all");
-            artifacts = JsonSerializer.Deserialize<Artifact[]>(response);
-        }
-        catch (Exception e)
-        {
-            errormsg = "" + e;
-            error = true;
-        }
-        finally
-        {
-            loading = false;
-        }
+        artifacts = await data.getArtifacts(Http);
         await base.OnInitializedAsync();
     }
 }

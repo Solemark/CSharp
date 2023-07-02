@@ -1,0 +1,27 @@
+namespace GenshinImpactWiki.Data.Services;
+using GenshinImpactWiki.Data.Models;
+using System.Net.Http;
+public class ArtifactService : DataService
+{
+    public async Task<Artifact[]> getArtifacts(HttpClient http)
+    {
+        Artifact[]? weapons = null;
+        loading = true;
+        error = false;
+        errormsg = "";
+        try
+        {
+            weapons = await http.GetFromJsonAsync<Artifact[]>("https://api.genshin.dev/artifacts/all");
+        }
+        catch (Exception e)
+        {
+            errormsg = "" + e;
+            error = true;
+        }
+        finally
+        {
+            loading = false;
+        }
+        return weapons!;
+    }
+}

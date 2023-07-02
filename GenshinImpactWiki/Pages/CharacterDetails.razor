@@ -1,19 +1,19 @@
 @page "/characters/{input}"
-@using System.Text.Json
+@inject GenshinImpactWiki.Data.Services.CharacterService data
 @inject HttpClient Http
 
 <PageTitle>Character -</PageTitle>
 
-@if (loading)
+@if (data.loading)
 {
     <p>LOADING. . .</p>
 }
-@if (error)
+@if (data.error)
 {
     <p>ERROR!</p>
-    <p>@errormsg</p>
+    <p>@data.errormsg</p>
 }
-@if (!loading && !error)
+@if (!data.loading && !data.error)
 {
     <PageTitle>Character - @character!.name</PageTitle>
     <h1>@character!.name</h1>
@@ -26,28 +26,10 @@
     [Parameter]
     public string? input { get; set; }
     private Character? character;
-    private bool loading = true;
-    private bool error = false;
-    private string errormsg = "";
 
     protected override async Task OnInitializedAsync()
     {
-        loading = true;
-        error = false;
-        try
-        {
-            var response = await Http.GetStringAsync("https://api.genshin.dev/characters/" + input);
-            character = JsonSerializer.Deserialize<Character>(response);
-        }
-        catch (Exception e)
-        {
-            errormsg = "" + e;
-            error = true;
-        }
-        finally
-        {
-            loading = false;
-        }
+        character = await data.getCharacterDetails(Http, input!);
         await base.OnInitializedAsync();
     }
 }

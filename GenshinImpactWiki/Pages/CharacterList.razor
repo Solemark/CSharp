@@ -1,21 +1,21 @@
 @page "/characters"
-@using System.Text.Json
+@inject GenshinImpactWiki.Data.Services.CharacterService data
 @inject HttpClient Http
 
 <PageTitle>Characters</PageTitle>
 
 <h1>Character List</h1>
 
-@if (loading)
+@if (data.loading)
 {
     <p>LOADING. . .</p>
 }
-@if (error)
+@if (data.error)
 {
     <p>ERROR!</p>
-    <p>@errormsg</p>
+    <p>@data.errormsg</p>
 }
-@if (!loading && !error)
+@if (!data.loading && !data.error)
 {
     <div class='flexbox'>
     @foreach (var character in characters!)
@@ -27,27 +27,10 @@
 
 @code {
     private Character[]? characters;
-    private bool loading = true;
-    private bool error = false;
-    private string errormsg = "";
+
     protected override async Task OnInitializedAsync()
     {
-        loading = true;
-        error = false;
-        try
-        {
-            var response = await Http.GetStringAsync("https://api.genshin.dev/characters/all");
-            characters = JsonSerializer.Deserialize<Character[]>(response);
-        }
-        catch (Exception e)
-        {
-            errormsg = "" + e;
-            error = true;
-        }
-        finally
-        {
-            loading = false;
-        }
+        characters = await data.getCharacters(Http);
         await base.OnInitializedAsync();
     }
 }
