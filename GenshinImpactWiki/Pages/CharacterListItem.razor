@@ -1,0 +1,14 @@
+<a href="/characters/@character!.cureName(character.name, character.vision)">
+    <div class="card">
+        <img src="https://api.genshin.dev/characters/@character.cureName(character.name, character.vision)/@character.checkTraveler(character.name)"
+            class="card-img-top" alt="character card">
+        <div class="card-body">
+            <h5 class="card-title">@character.shortenName(character.name!, character.vision!)</h5>
+        </div>
+    </div>
+</a>
+
+@code {
+    [Parameter]
+    public Character? character { get; set; }
+}

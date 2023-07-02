@@ -14,6 +14,68 @@ public class Character
     public CharacterSubtype[]? skillTalents { get; set; }
     public CharacterSubtype[]? passiveTalents { get; set; }
     public CharacterSubtype[]? constellations { get; set; }
+
+    public string shortenName(string name, string vision)
+    {
+        string[] names = name.Split(" ");
+        name = names[names.Length - 1];
+
+        switch (name)
+        {
+            case "Tao":
+                return "Hu Tao";
+            case "Shogun":
+                return "Raiden";
+            case "Traveler":
+                return name + "-" + vision;
+            default:
+                return name;
+        }
+    }
+
+    public String checkTraveler(string? name)
+    {
+        if (name == "Traveler")
+        {
+            return "icon-big-lumine";
+        }
+        else
+        {
+            return "icon-big";
+        }
+    }
+
+    public String cureName(string? name, string? vision)
+    {
+        name = name!.ToLower();
+        name = name.Replace(" ", "-");
+
+        switch (name)
+        {
+            case "kamisato-ayaka":
+                return "ayaka";
+            case "kaedehara-kazuha":
+                return "kazuha";
+            case "sangonomiya-kokomi":
+                return "kokomi";
+            case "raiden-shogun":
+                return "raiden";
+            case "kujou-sara":
+                return "sara";
+            case "traveler":
+                return "traveler" + "-" + vision!.ToLower();
+            default:
+                return name;
+        }
+    }
+
+    public String cureBirthday(string? birthday)
+    {
+        string[] birthdays = birthday!.Split("-");
+        birthday = birthdays[birthdays.Length - 1] + "/" + birthdays[birthdays.Length - 2];
+
+        return birthday;
+    }
 }
 
 public class CharacterSubtype

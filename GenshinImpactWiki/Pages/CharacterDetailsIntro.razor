@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="flexbox">
+        <img src="https://api.genshin.dev/characters/@character!.cureName(character.name, character.vision)/@character.checkTraveler(character.name)"
+            class="card-img-top" alt="@character.name image card">
+        <div>
+            <p>
+                Name: @character.name<br />
+                Title: @character.title<br />
+                Vision: @character.vision<br />
+                Weapon: @character.weapon<br />
+                Nation: @character.nation<br />
+                Affiliation: @character.affiliation<br />
+                Rarity: @character.rarity*<br />
+                Constellation: @character.constellation<br />
+                Birthday: @character.cureBirthday(character.birthday!)<br />
+                @character.description
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .flexbox {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 1em;
+    }
+
+    .card-img-top {
+        width: 15em;
+        height: 20em;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public Character? character { get; set; }
+}

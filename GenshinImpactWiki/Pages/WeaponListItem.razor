@@ -1,0 +1,22 @@
+<div class="card">
+    <img src="https://api.genshin.dev/weapons/@weapon!.cureName(weapon.name)/icon" class="card-img-top"
+        alt="weapon icon">
+    <div class="card-body">
+        <h5 class="card-title">@weapon.name</h5>
+        <p>
+            Type: @weapon.type<br />
+            Rarity: @weapon.rarity*<br />
+            Base Attack: @weapon.baseAttack<br />
+            Substat: @weapon.subStat<br />
+            location: @weapon.location<br />
+            Ascension Material: @weapon.ascensionMaterial<br />
+            Passive: @weapon.passiveName<br />
+            @weapon.passiveDesc
+        </p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Weapon? weapon { get; set; }
+}

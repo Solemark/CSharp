@@ -20,48 +20,14 @@
     <div class='flexbox'>
     @foreach (var character in characters!)
         {
-            <a href="/characters/@cureName(character.name, character.vision)">
-                <div class="card">
-                    <img src="https://api.genshin.dev/characters/@cureName(character.name, character.vision)/@checkTraveler(character.name)"
-                        class="card-img-top" alt="character card">
-                    <div class="card-body">
-                        <h5 class="card-title">@shortenName(character.name!, character.vision!)</h5>
-                    </div>
-                </div>
-            </a>
+            <CharacterListItem character=@character />
         }
     </div>
 }
 
-<style>
-    .flexbox {
-        display: flex;
-        justify-content: center;
-        align-content: space-around;
-        gap: 1em;
-        text-align: center;
-        flex-wrap: wrap;
-    }
-
-    .card {
-        width: 9em;
-
-    }
-
-    .card-img-top {
-        width: inherit;
-        height: 9em;
-    }
-
-    a {
-        color: inherit;
-        text-decoration: inherit;
-    }
-</style>
-
 @code {
     private Character[]? characters;
-    private bool loading = false;
+    private bool loading = true;
     private bool error = false;
     private string errormsg = "";
     protected override async Task OnInitializedAsync()
@@ -83,59 +49,5 @@
             loading = false;
         }
         await base.OnInitializedAsync();
-    }
-
-    private string shortenName(string name, string vision)
-    {
-        string[] names = name.Split(" ");
-        name = names[names.Length - 1];
-
-        switch (name)
-        {
-            case "Tao":
-                return "Hu Tao";
-            case "Shogun":
-                return "Raiden";
-            case "Traveler":
-                return name + "-" + vision;
-            default:
-                return name;
-        }
-    }
-
-    private String checkTraveler(string? name)
-    {
-        if (name == "Traveler")
-        {
-            return "icon-big-lumine";
-        }
-        else
-        {
-            return "icon-big";
-        }
-    }
-
-    private String cureName(string? name, string? vision)
-    {
-        name = name!.ToLower();
-        name = name.Replace(" ", "-");
-
-        switch (name)
-        {
-            case "kamisato-ayaka":
-                return "ayaka";
-            case "kaedehara-kazuha":
-                return "kazuha";
-            case "sangonomiya-kokomi":
-                return "kokomi";
-            case "raiden-shogun":
-                return "raiden";
-            case "kujou-sara":
-                return "sara";
-            case "traveler":
-                return "traveler" + "-" + vision!.ToLower();
-            default:
-                return name;
-        }
     }
 }

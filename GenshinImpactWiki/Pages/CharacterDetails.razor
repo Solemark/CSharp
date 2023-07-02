@@ -18,74 +18,15 @@
     <PageTitle>Character - @character!.name</PageTitle>
     <h1>@character!.name</h1>
 
-    <div class="card">
-        <div class="flexbox">
-            <img src="https://api.genshin.dev/characters/@cureName(character.name, character.vision)/@checkTraveler(character.name)"
-                class="card-img-top" alt="@character.name image card">
-            <div>
-                <p>
-                    Name: @character.name<br />
-                    Title: @character.title<br />
-                    Vision: @character.vision<br />
-                    Weapon: @character.weapon<br />
-                    Nation: @character.nation<br />
-                    Affiliation: @character.affiliation<br />
-                    Rarity: @character.rarity*<br />
-                    Constellation: @character.constellation<br />
-                    Birthday: @cureBirthday(character.birthday!)<br />
-                    @character.description
-                </p>
-            </div>
-        </div>
-        <div class="details">
-            <h2>Skills</h2>
-            @foreach (var skill in character.skillTalents!)
-            {
-                <h4>@skill.name</h4>
-                <p>@skill.unlock</p>
-                <p>@skill.description</p>
-            }
-            <h2>Passives</h2>
-            @foreach (var skill in character.passiveTalents!)
-            {
-                <h4>@skill.name</h4>
-                <p>@skill.unlock</p>
-                <p>@skill.description</p>
-            }
-            <h2>Constellations</h2>
-            @foreach (var skill in character.constellations!)
-            {
-                <h4>@skill.name</h4>
-                <p>@skill.unlock</p>
-                <p>@skill.description</p>
-            }
-        </div>
-    </div>
+    <CharacterDetailsIntro character=@character />
+    <CharacterDetailsSkills character=@character />
 }
-
-<style>
-    .flexbox {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 1em;
-    }
-
-    .details {
-        margin-top: 1em;
-    }
-
-    .card-img-top {
-        width: 15em;
-        height: 20em;
-    }
-</style>
 
 @code {
     [Parameter]
     public string? input { get; set; }
     private Character? character;
-    private bool loading = false;
+    private bool loading = true;
     private bool error = false;
     private string errormsg = "";
 
@@ -108,49 +49,5 @@
             loading = false;
         }
         await base.OnInitializedAsync();
-    }
-
-    private String checkTraveler(string? name)
-    {
-        if (name == "Traveler")
-        {
-            return "icon-big-lumine";
-        }
-        else
-        {
-            return "icon-big";
-        }
-    }
-
-    private String cureName(string? name, string? vision)
-    {
-        name = name!.ToLower();
-        name = name.Replace(" ", "-");
-
-        switch (name)
-        {
-            case "kamisato-ayaka":
-                return "ayaka";
-            case "kaedehara-kazuha":
-                return "kazuha";
-            case "sangonomiya-kokomi":
-                return "kokomi";
-            case "raiden-shogun":
-                return "raiden";
-            case "kujou-sara":
-                return "sara";
-            case "traveler":
-                return "traveler" + "-" + vision!.ToLower();
-            default:
-                return name;
-        }
-    }
-
-    private String cureBirthday(string? birthday)
-    {
-        string[] birthdays = birthday!.Split("-");
-        birthday = birthdays[birthdays.Length - 1] + "/" + birthdays[birthdays.Length - 2];
-
-        return birthday;
     }
 }

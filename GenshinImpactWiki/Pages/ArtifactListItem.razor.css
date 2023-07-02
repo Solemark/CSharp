@@ -1,0 +1,11 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.card-img-top {
+    width: 9em;
+    height: 9em;
+}

@@ -10,4 +10,12 @@ public class Weapon
     public string? passiveDesc { get; set; }
     public string? location { get; set; }
     public string? ascensionMaterial { get; set; }
+
+    public String cureName(string? name)
+    {
+        name = name!.ToLower();
+        name = name.Replace(" ", "-");
+
+        return name;
+    }
 }

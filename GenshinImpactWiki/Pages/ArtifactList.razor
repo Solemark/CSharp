@@ -19,43 +19,9 @@
 {
     @foreach (var artifact in artifacts!)
     {
-        <div class="card">
-    <img src="https://api.genshin.dev/artifacts/@cureName(artifact.name)/circlet-of-logos" class="card-img-top"
-        alt="artifact icon">
-    <div class="card-body">
-        <h5 class="card-title">@artifact.name</h5>
-        Rarity: @artifact.rarity*<br />
-        @if (checkArtifact(artifact.name!))
-                {
-                    <p>
-                        2p: @artifact.two_piece_bonus<br />
-                        4p: @artifact.four_piece_bonus<br />
-                    </p>
-                }
-                else
-                {
-                    <p>
-                        1p: @artifact.one_piece_bonus<br />
-                    </p>
-                }
-            </div>
-        </div>
+        <ArtifactListItem artifact=@artifact />
     }
 }
-
-<style>
-    .card {
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-        margin-top: 1em;
-    }
-
-    .card-img-top {
-        width: 9em;
-        height: 9em;
-    }
-</style>
 
 @code {
     private Artifact[]? artifacts;
@@ -81,32 +47,5 @@
             loading = false;
         }
         await base.OnInitializedAsync();
-    }
-
-    private Boolean checkArtifact(string? name)
-    {
-        switch (name)
-        {
-            case "Prayers for Destiny":
-                return false;
-            case "Prayers for Illumination":
-                return false;
-            case "Prayers for Wisdom":
-                return false;
-            case "Prayers to Springtime":
-                return false;
-            case "Sacrifieur to the Firmament":
-                return false;
-            default:
-                return true;
-        }
-    }
-
-    private String cureName(string? name)
-    {
-        name = name!.ToLower();
-        name = name.Replace(" ", "-");
-        name = name.Replace("'", "-");
-        return name;
     }
 }

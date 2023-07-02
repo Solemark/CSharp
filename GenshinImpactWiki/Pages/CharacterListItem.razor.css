@@ -1,0 +1,14 @@
+.card {
+    width: 9em;
+
+}
+
+.card-img-top {
+    width: inherit;
+    height: 9em;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}

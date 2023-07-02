@@ -1,0 +1,28 @@
+<div>
+    <h2>Skills</h2>
+    @foreach (var skill in character!.skillTalents!)
+    {
+        <h4>@skill.name</h4>
+        <p>@skill.unlock</p>
+        <p>@skill.description</p>
+    }
+    <h2>Passives</h2>
+    @foreach (var skill in character.passiveTalents!)
+    {
+        <h4>@skill.name</h4>
+        <p>@skill.unlock</p>
+        <p>@skill.description</p>
+    }
+    <h2>Constellations</h2>
+    @foreach (var skill in character.constellations!)
+    {
+        <h4>@skill.name</h4>
+        <p>@skill.unlock</p>
+        <p>@skill.description</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Character? character { get; set; }
+}
