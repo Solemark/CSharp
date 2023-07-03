@@ -1,6 +1,5 @@
 namespace GenshinImpactWiki.Data.Services;
 using GenshinImpactWiki.Data.Models;
-using System.Net.Http;
 public class WeaponService : DataService
 {
     public async Task<Weapon[]?> getWeapons(HttpClient http)

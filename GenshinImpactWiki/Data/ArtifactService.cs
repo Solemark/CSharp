@@ -1,6 +1,5 @@
 namespace GenshinImpactWiki.Data.Services;
 using GenshinImpactWiki.Data.Models;
-using System.Net.Http;
 public class ArtifactService : DataService
 {
     public async Task<Artifact[]?> getArtifacts(HttpClient http)

@@ -1,6 +1,5 @@
 namespace GenshinImpactWiki.Data.Services;
 using GenshinImpactWiki.Data.Models;
-using System.Net.Http;
 public class CharacterService : DataService
 {
     public async Task<Character[]?> getCharacters(HttpClient http)
