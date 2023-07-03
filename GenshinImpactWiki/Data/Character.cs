@@ -79,7 +79,7 @@ public class Character
                 output = name;
                 break;
         }
-        return name;
+        return output;
     }
 
     public String cureBirthday(string? birthday)
