@@ -1,48 +1,20 @@
 namespace ConsoleApps.Unittest;
 public class TestDiceRoll
 {
-    [Fact]
-    public void TestD20()
+    private int[] getTestData()
     {
-        int expect = 20;
-        int result = DiceRoll.diceRoll(expect);
-
-        Assert.InRange(result, 1, expect);
+        return new int[] { 20, 10, 8, 6, 4 };
     }
 
     [Fact]
-    public void TestD10()
+    public void testDiceRoll()
     {
-        int expect = 10;
-        int result = DiceRoll.diceRoll(expect);
-
-        Assert.InRange(result, 1, expect);
-    }
-
-    [Fact]
-    public void TestD8()
-    {
-        int expect = 8;
-        int result = DiceRoll.diceRoll(expect);
-
-        Assert.InRange(result, 1, expect);
-    }
-
-    [Fact]
-    public void TestD6()
-    {
-        int expect = 6;
-        int result = DiceRoll.diceRoll(expect);
-
-        Assert.InRange(result, 1, expect);
-    }
-
-    [Fact]
-    public void TestD4()
-    {
-        int expect = 4;
-        int result = DiceRoll.diceRoll(expect);
-
-        Assert.InRange(result, 1, expect);
+        int[] data = getTestData();
+        foreach (var number in data)
+        {
+            int expect = number;
+            int result = DiceRoll.diceRoll(number);
+            Assert.InRange(result, 1, expect);
+        }
     }
 }

@@ -1,51 +1,45 @@
 namespace ConsoleApps.Unittest;
 public class TestCircles
 {
-    [Fact]
-    public void TestCorrectCircleCircumference()
+    private float[][] getTestCircumferenceData()
     {
-        float expect = (float)62.8318558;
-        float result = Circles.getCircumference(10);
-        Assert.Equal(expect, result);
+        return new float[][]{
+            new float[]{62.8318558F, 10},
+            new float[]{0F, 0},
+            new float[]{((float)Math.PI * 2), 1},
+        };
+    }
+
+    private float[][] getTestAreaData()
+    {
+        return new float[][]{
+            new float[]{314.159271F, 10},
+            new float[]{0, 0},
+            new float[]{(float)Math.PI, 1},
+        };
     }
 
     [Fact]
-    public void TestZeroCircleCircumference()
+    public void testGetCircumference()
     {
-        float expect = 0;
-        float result = Circles.getCircumference(0);
-        Assert.Equal(expect, result);
+        float[][] data = getTestCircumferenceData();
+        foreach (var item in data)
+        {
+            float expect = item[0];
+            float result = Circles.getCircumference(item[1]);
+            Assert.Equal(expect, result);
+        }
     }
 
     [Fact]
-    public void TestOneCircleCircumference()
+    public void testGetArea()
     {
-        float expect = (float)(Math.PI * 2);
-        float result = Circles.getCircumference(1);
-        Assert.Equal(expect, result);
-    }
-
-    [Fact]
-    public void TestCorrectCircleArea()
-    {
-        float expect = (float)314.159271;
-        float result = Circles.getArea(10);
-        Assert.Equal(expect, result);
-    }
-
-    [Fact]
-    public void TestZeroCircleArea()
-    {
-        float expect = 0;
-        float result = Circles.getArea(0);
-        Assert.Equal(expect, result);
-    }
-
-    [Fact]
-    public void TestOneCircleArea()
-    {
-        float expect = (float)Math.PI;
-        float result = Circles.getArea(1);
-        Assert.Equal(expect, result);
+        float[][] data = getTestAreaData();
+        foreach (var item in data)
+        {
+            float expect = item[0];
+            float result = Circles.getArea(item[1]);
+            Assert.Equal(expect, result);
+        }
     }
 }

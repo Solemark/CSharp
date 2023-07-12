@@ -45,7 +45,6 @@ public class TestCalculator
         }
     }
 
-
     [Fact]
     public void testDivision()
     {
