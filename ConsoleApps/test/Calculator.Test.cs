@@ -1,75 +1,60 @@
 namespace ConsoleApps.Unittest;
 public class TestCalculator
 {
-    [Fact]
-    public void TestAdditionIsPositive()
+    private float[][] getTestData()
     {
-        float expect = 10;
-        float result = Calculator.addition(5, 5);
-
-        Assert.Equal(expect, result);
+        return new float[][]{
+            new float[]{5, 5},
+            new float[]{5, -5},
+            new float[]{-5, -5}
+        };
     }
 
     [Fact]
-    public void TestAdditionIsNegative()
+    public void testAddition()
     {
-        float expect = -10;
-        float result = Calculator.addition(-5, -5);
-
-        Assert.Equal(expect, result);
+        float[][] data = getTestData();
+        foreach (var item in data)
+        {
+            float expect = item[0] + item[1];
+            float result = Calculator.addition(item[0], item[1]);
+            Assert.Equal(expect, result);
+        }
+    }
+    [Fact]
+    public void testSubtraction()
+    {
+        float[][] data = getTestData();
+        foreach (var item in data)
+        {
+            float expect = item[0] - item[1];
+            float result = Calculator.subtraction(item[0], item[1]);
+            Assert.Equal(expect, result);
+        }
     }
 
     [Fact]
-    public void TestSubtractionIsPositive()
+    public void testMultiplication()
     {
-        float expect = 0;
-        float result = Calculator.subtraction(5, 5);
-
-        Assert.Equal(expect, result);
+        float[][] data = getTestData();
+        foreach (var item in data)
+        {
+            float expect = item[0] * item[1];
+            float result = Calculator.multiplication(item[0], item[1]);
+            Assert.Equal(expect, result);
+        }
     }
 
-    [Fact]
-    public void TestSubtractionIsNegative()
-    {
-        float expect = 0;
-        float result = Calculator.subtraction(-5, -5);
-
-        Assert.Equal(expect, result);
-    }
 
     [Fact]
-    public void TestMultiplicationIsPositive()
+    public void testDivision()
     {
-        float expect = 25;
-        float result = Calculator.multiplication(5, 5);
-
-        Assert.Equal(expect, result);
-    }
-
-    [Fact]
-    public void TestMultiplicationIsNegative()
-    {
-        float expect = 25;
-        float result = Calculator.multiplication(-5, -5);
-
-        Assert.Equal(expect, result);
-    }
-
-    [Fact]
-    public void TestDivisionIsPositive()
-    {
-        float expect = 1;
-        float result = Calculator.division(5, 5);
-
-        Assert.Equal(expect, result);
-    }
-
-    [Fact]
-    public void TestDivisionIsNegative()
-    {
-        float expect = 1;
-        float result = Calculator.division(-5, -5);
-
-        Assert.Equal(expect, result);
+        float[][] data = getTestData();
+        foreach (var item in data)
+        {
+            float expect = item[0] / item[1];
+            float result = Calculator.division(item[0], item[1]);
+            Assert.Equal(expect, result);
+        }
     }
 }
