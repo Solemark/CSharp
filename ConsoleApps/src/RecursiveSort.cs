@@ -1,24 +1,24 @@
 namespace ConsoleApps.SourceCode;
 public class RecursiveSort
 {
-    public static List<int> insertionSort(List<int> list, int count)
+    public static int[] insertionSort(int[] input, int count)
     {
         if (count <= 1)
         {
-            return list;
+            return input;
         }
         else
         {
-            insertionSort(list, count - 1);
-            int current = list[count - 1];
+            insertionSort(input, count - 1);
+            int current = input[count - 1];
             int i = count - 2;
-            while (i >= 0 && list[i] > current)
+            while (i >= 0 && input[i] > current)
             {
-                list[i + 1] = list[i];
+                input[i + 1] = input[i];
                 i--;
-                list[i + 1] = current;
+                input[i + 1] = current;
             }
         }
-        return list;
+        return input;
     }
 }

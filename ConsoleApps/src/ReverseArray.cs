@@ -16,9 +16,9 @@ public class ReverseArray
         return array;
     }
 
-    public static List<int> reverseList(List<int> list)
+    public static int[] reverseList(int[] list)
     {
-        int end = list.Count - 1;
+        int end = list.Length - 1;
         int x = 0;
         int y = 0;
         for (int i = 0; i <= end; i++, end--)

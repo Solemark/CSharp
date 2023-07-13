@@ -14,7 +14,7 @@ public class RecursiveSum
         }
     }
 
-    public static int sumArray(List<int> list, int number, int total)
+    public static int sumArray(int[] list, int number, int total)
     {
         if (number <= 0)
         {

@@ -11,10 +11,10 @@ public class SumArray
         return total;
     }
 
-    public static int sumList(List<int> list)
+    public static int sumList(int[] list)
     {
         int total = 0;
-        for (int i = 0; i <= list.Count; i++)
+        for (int i = 0; i <= list.Length; i++)
         {
             total += i;
         }
