@@ -1,27 +1,19 @@
 namespace ConsoleApps.Unittest;
 public class TestGachaRoll
 {
-    [Fact]
-    public void TestGachaRollFGO()
+    private string[] getData()
     {
-        const string expect = "FGO";
-        string result = GachaRoll.gachaRoll(expect);
-        Assert.Contains(expect, result);
+        return new string[] { "FGO", "AK", "GI" };
     }
 
     [Fact]
-    public void TestGachaRollAK()
+    public void testGachaRoll()
     {
-        const string expect = "AK";
-        string result = GachaRoll.gachaRoll(expect);
-        Assert.Contains(expect, result);
-    }
-
-    [Fact]
-    public void TestGachaRollGI()
-    {
-        const string expect = "GI";
-        string result = GachaRoll.gachaRoll(expect);
-        Assert.Contains(expect, result);
+        string[] data = getData();
+        foreach (string item in data)
+        {
+            string result = GachaRoll.gachaRoll(item);
+            Assert.Contains(item, result);
+        }
     }
 }
