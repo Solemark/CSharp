@@ -1,5 +1,96 @@
 ﻿@page "/"
 
 <PageTitle>BookingGUI</PageTitle>
-
-<h1>Booking System 3.0</h1>
+<div class="container">
+    <h1>Booking System 3.0</h1>
+    <table>
+        <tr>
+            <td>
+                <label for="booking_id">Booking ID: </label>
+            </td>
+            <td>
+                <input type="text" name="booking_id" placeholder="Booking ID" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="booking_name">Name: </label>
+            </td>
+            <td>
+                <input type="text" name="booking_name" placeholder="Name" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="contact_number">Contact Number: </label>
+            </td>
+            <td>
+                <input type="text" name="contact_number" placeholder="Contact Number" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="address_field">Address: </label>
+            </td>
+            <td>
+                <input type="text" name="address_field" placeholder="Address" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="booking_date">Booking Date: </label>
+            </td>
+            <td>
+                <input type="text" name="booking_date" placeholder="Booking Date" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="number_of_weeks">Number of Weeks: </label>
+            </td>
+            <td>
+                <input type="text" name="number_of_weeks" placeholder="# of Weeks" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="booking_rooms">Number of Rooms: </label>
+            </td>
+            <td>
+                <input type="text" name="booking_rooms" placeholder="# of Rooms" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="garden_area">Garden Area (m^2): </label>
+            </td>
+            <td>
+                <input type="text" name="garden_area" placeholder="Garden Area" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="booking_price">Booking Price: </label>
+            </td>
+            <td>
+                <input type="text" name="booking_price" disabled />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" type="button">Book</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" type="button">Search</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" type="button">Edit</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" type="button">Clear</button>
+            </td>
+        </tr>
+    </table>
+</div>
