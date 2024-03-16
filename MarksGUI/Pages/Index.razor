@@ -4,29 +4,29 @@
 
 <h1>Marks GUI</h1>
 
-<input @bind="inputName" type="text" placeholder="Name">
+<input @bind="InputName" type="text" placeholder="Name">
 <input @bind="inputMark" type="text" placeholder="Mark">
 <br />
 <button class="btn-primary" @onclick="saveUser">Submit</button>
 <ul>
     @foreach (Mark student in students)
     {
-        <li>Name: @student.studentName Grade: @student.getGrade(student.studentMark)</li>
+        <li>Name: @student.StudentName Grade: @student.GetGrade()</li>
     }
 </ul>
 
 @code {
     private List<Mark> students = new List<Mark>();
-    private string? inputName { get; set; }
-    private string? inputMark { get; set; }
+    private string? InputName { get; set; }
+    private string? InputMark { get; set; }
 
     private void saveUser()
     {
         Mark mark = new Mark();
-        mark.studentName = inputName;
-        mark.studentMark = Int32.Parse(inputMark ?? "0");
+        mark.StudentName = InputName;
+        mark.StudentMark = Int32.Parse(InputMark ?? "0");
         students.Add(mark);
-        inputName = "";
+        InputName = "";
         inputMark = "";
     }
 }
