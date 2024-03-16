@@ -5,21 +5,21 @@ public class WeaponService : DataService
     public async Task<Weapon[]?> getWeapons(HttpClient http)
     {
         Weapon[]? weapons = null;
-        loading = true;
-        error = false;
-        errormsg = "";
+        Loading = true;
+        Error = false;
+        Errormsg = "";
         try
         {
             weapons = await http.GetFromJsonAsync<Weapon[]>("https://api.genshin.dev/weapons/all");
         }
         catch (Exception e)
         {
-            errormsg = String.Format("{0}", e);
-            error = true;
+            Errormsg = String.Format("{0}", e);
+            Error = true;
         }
         finally
         {
-            loading = false;
+            Loading = false;
         }
         return weapons;
     }

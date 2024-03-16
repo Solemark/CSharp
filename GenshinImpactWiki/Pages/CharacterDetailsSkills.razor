@@ -1,24 +1,25 @@
 <div class="card">
     <h2>Skills</h2>
-    @foreach (var skill in character!.skillTalents!)
+    @foreach (var skill in character!.SkillTalents!)
     {
-        <h4>@skill.name</h4>
-        <p>@skill.unlock</p>
-        <p>@skill.description</p>
+        <h4>@skill.Name</h4>
+        <p>@skill.Unlock</p>
+        <p>@skill.Description</p>
     }
     <h2>Passives</h2>
-    @foreach (var skill in character.passiveTalents!)
-    {
-        <h4>@skill.name</h4>
-        <p>@skill.unlock</p>
-        <p>@skill.description</p>
+    @foreach (var skill in character.PassiveTalents!)
+
+        <h4>@skill.Name</h4>
+
+    <p>@skill.Unlock</p>
+    <p>@skill.Description</p>
     }
     <h2>Constellations</h2>
-    @foreach (var skill in character.constellations!)
+    @foreach (var skill in character.Constellations!)
     {
-        <h4>@skill.name</h4>
-        <p>@skill.unlock</p>
-        <p>@skill.description</p>
+        <h4>@skill.Name</h4>
+        <p>@skill.Unlock</p>
+        <p>@skill.Description</p>
     }
 </div>
 

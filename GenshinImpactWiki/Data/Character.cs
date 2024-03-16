@@ -1,44 +1,34 @@
 namespace GenshinImpactWiki.Data.Models;
 public class Character
 {
-    public string? name { get; set; }
-    public string? title { get; set; }
-    public string? vision { get; set; }
-    public string? weapon { get; set; }
-    public string? nation { get; set; }
-    public string? affiliation { get; set; }
-    public int? rarity { get; set; }
-    public string? constellation { get; set; }
-    public string? birthday { get; set; }
-    public string? description { get; set; }
-    public CharacterSubtype[]? skillTalents { get; set; }
-    public CharacterSubtype[]? passiveTalents { get; set; }
-    public CharacterSubtype[]? constellations { get; set; }
+    public string? Name { get; set; }
+    public string? Title { get; set; }
+    public string? Vision { get; set; }
+    public string? Weapon { get; set; }
+    public string? Nation { get; set; }
+    public string? Affiliation { get; set; }
+    public int? Rarity { get; set; }
+    public string? Constellation { get; set; }
+    public string? Birthday { get; set; }
+    public string? Description { get; set; }
+    public CharacterSubtype[]? SkillTalents { get; set; }
+    public CharacterSubtype[]? PassiveTalents { get; set; }
+    public CharacterSubtype[]? Constellations { get; set; }
 
-    public string shortenName(string name, string vision)
+    public string ShortenName(string name, string vision)
     {
         string[] names = name.Split(" ");
-        name = names[names.Length - 1];
-        string output = "";
-        switch (name)
+        name = names[^1];
+        return name switch
         {
-            case "Tao":
-                output = "Hu Tao";
-                break;
-            case "Shogun":
-                output = "Raiden";
-                break;
-            case "Traveler":
-                output = String.Format("{0}-{1}", name, vision);
-                break;
-            default:
-                output = name;
-                break;
-        }
-        return output;
+            "Tao" => "Hu Tao",
+            "Shogun" => "Raiden",
+            "Traveler" => string.Format("{0}-{1}", name, vision),
+            _ => name,
+        };
     }
 
-    public String checkTraveler(string? name)
+    public string CheckTraveler(string? name)
     {
         if (name == "Traveler")
         {
@@ -50,48 +40,32 @@ public class Character
         }
     }
 
-    public String cureName(string? name, string? vision)
+    public string CureName(string? name, string? vision)
     {
         name = name!.ToLower();
         name = name.Replace(" ", "-");
-        string output = "";
-        switch (name)
+        return name switch
         {
-            case "kamisato-ayaka":
-                output = "ayaka";
-                break;
-            case "kaedehara-kazuha":
-                output = "kazuha";
-                break;
-            case "sangonomiya-kokomi":
-                output = "kokomi";
-                break;
-            case "raiden-shogun":
-                output = "raiden";
-                break;
-            case "kujou-sara":
-                output = "sara";
-                break;
-            case "traveler":
-                output = String.Format("traveler-{0}", vision!.ToLower());
-                break;
-            default:
-                output = name;
-                break;
-        }
-        return output;
+            "kamisato-ayaka" => "ayaka",
+            "kaedehara-kazuha" => "kazuha",
+            "sangonomiya-kokomi" => "kokomi",
+            "raiden-shogun" => "raiden",
+            "kujou-sara" => "sara",
+            "traveler" => string.Format("traveler-{0}", vision!.ToLower()),
+            _ => name,
+        };
     }
 
-    public String cureBirthday(string? birthday)
+    public string CureBirthday(string? birthday)
     {
         string[] birthdays = birthday!.Split("-");
-        return String.Format("{0}/{1}", birthdays[birthdays.Length - 1], birthdays[birthdays.Length - 2]);
+        return string.Format("{0}/{1}", birthdays[^1], birthdays[^2]);
     }
 }
 
 public class CharacterSubtype
 {
-    public string? name { get; set; }
-    public string? unlock { get; set; }
-    public string? description { get; set; }
+    public string? Name { get; set; }
+    public string? Unlock { get; set; }
+    public string? Description { get; set; }
 }

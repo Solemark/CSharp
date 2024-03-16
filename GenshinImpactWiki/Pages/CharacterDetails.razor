@@ -4,19 +4,19 @@
 
 <PageTitle>Character -</PageTitle>
 
-@if (data.loading)
+@if (data.Loading)
 {
     <p>LOADING. . .</p>
 }
-@if (data.error)
+@if (data.Error)
 {
     <p>ERROR!</p>
-    <p>@data.errormsg</p>
+    <p>@data.Errormsg</p>
 }
-@if (!data.loading && !data.error)
+@if (!data.Loading && !data.Error)
 {
-    <PageTitle>Character - @character!.name</PageTitle>
-    <h1>@character!.name</h1>
+    <PageTitle>Character - @character!.Name</PageTitle>
+    <h1>@character!.Name</h1>
 
     <CharacterDetailsCard character=@character />
     <CharacterDetailsSkills character=@character />

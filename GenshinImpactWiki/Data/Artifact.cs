@@ -2,17 +2,17 @@ using System.Text.Json.Serialization;
 namespace GenshinImpactWiki.Data.Models;
 public class Artifact
 {
-    public string? name { get; set; }
+    public string? Name { get; set; }
     [JsonPropertyName("max_rarity")]
-    public int? rarity { get; set; }
+    public int? Rarity { get; set; }
     [JsonPropertyName("1-piece_bonus")]
-    public string? one_piece_bonus { get; set; }
+    public string? One_piece_bonus { get; set; }
     [JsonPropertyName("2-piece_bonus")]
-    public string? two_piece_bonus { get; set; }
+    public string? Two_piece_bonus { get; set; }
     [JsonPropertyName("4-piece_bonus")]
-    public string? four_piece_bonus { get; set; }
+    public string? Four_piece_bonus { get; set; }
 
-    public Boolean checkArtifact(string? name)
+    public bool CheckArtifact(string? name)
     {
         bool output = true;
         switch (name)
@@ -39,7 +39,7 @@ public class Artifact
         return output;
     }
 
-    public String cureName(string? name)
+    public string CureName(string? name)
     {
         name = name!.ToLower();
         name = name.Replace(" ", "-");

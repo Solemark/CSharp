@@ -6,16 +6,16 @@
 
 <h1>Character List</h1>
 
-@if (data.loading)
+@if (data.Loading)
 {
     <p>LOADING. . .</p>
 }
-@if (data.error)
+@if (data.Error)
 {
     <p>ERROR!</p>
-    <p>@data.errormsg</p>
+    <p>@data.Errormsg</p>
 }
-@if (!data.loading && !data.error)
+@if (!data.Loading && !data.Error)
 {
     <div class='flexbox'>
     @foreach (var character in characters!)

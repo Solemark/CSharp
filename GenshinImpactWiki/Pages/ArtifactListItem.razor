@@ -2,19 +2,19 @@
     <img src="https://api.genshin.dev/artifacts/@artifact!.cureName(artifact.name)/circlet-of-logos"
         class="card-img-top" alt="artifact icon">
     <div class="card-body">
-        <h5 class="card-title">@artifact.name</h5>
-        Rarity: @artifact.rarity*<br />
-        @if (artifact.checkArtifact(artifact.name!))
+        <h5 class="card-title">@artifact.Name</h5>
+        Rarity: @artifact.Rarity*<br />
+        @if (artifact.CheckArtifact(artifact.Name!))
         {
             <p>
-                2p: @artifact.two_piece_bonus<br />
-                4p: @artifact.four_piece_bonus<br />
+                2p: @artifact.Two_piece_bonus<br />
+                4p: @artifact.Four_piece_bonus<br />
             </p>
         }
         else
         {
             <p>
-                1p: @artifact.one_piece_bonus<br />
+                1p: @artifact.One_piece_bonus<br />
             </p>
         }
     </div>
