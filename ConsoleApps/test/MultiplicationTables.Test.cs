@@ -4,7 +4,7 @@ public class TestMultiplicationTables
     [Fact]
     public void TestSixTimesTables()
     {
-        List<string> expect = new List<string>(){
+        List<string> expect = [
             "6 x 0 = 0",
             "6 x 1 = 6",
             "6 x 2 = 12",
@@ -18,8 +18,8 @@ public class TestMultiplicationTables
             "6 x 10 = 60",
             "6 x 11 = 66",
             "6 x 12 = 72",
-        };
-        List<string> result = MultiplicationTables.run(6, 12);
+        ];
+        List<string> result = MultiplicationTables.Run(6, 12);
         Assert.Equal(expect, result);
     }
 }

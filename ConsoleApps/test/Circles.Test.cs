@@ -1,44 +1,44 @@
 namespace ConsoleApps.Unittest;
 public class TestCircles
 {
-    private float[][] getTestCircumferenceData()
+    private static float[][] GetTestCircumferenceData()
     {
-        return new float[][]{
-            new float[]{62.8318558F, 10},
-            new float[]{0F, 0},
-            new float[]{((float)Math.PI * 2), 1},
-        };
+        return [
+            [62.8318558F, 10],
+            [0F, 0],
+            [((float)Math.PI * 2), 1],
+        ];
     }
 
-    private float[][] getTestAreaData()
+    private static float[][] GetTestAreaData()
     {
-        return new float[][]{
-            new float[]{314.159271F, 10},
-            new float[]{0, 0},
-            new float[]{(float)Math.PI, 1},
-        };
+        return [
+            [314.159271F, 10],
+            [0, 0],
+            [(float)Math.PI, 1],
+        ];
     }
 
     [Fact]
-    public void testGetCircumference()
+    public void TestGetCircumference()
     {
-        float[][] data = getTestCircumferenceData();
+        float[][] data = GetTestCircumferenceData();
         foreach (var item in data)
         {
             float expect = item[0];
-            float result = Circles.getCircumference(item[1]);
+            float result = Circles.GetCircumference(item[1]);
             Assert.Equal(expect, result);
         }
     }
 
     [Fact]
-    public void testGetArea()
+    public void TestGetArea()
     {
-        float[][] data = getTestAreaData();
+        float[][] data = GetTestAreaData();
         foreach (var item in data)
         {
             float expect = item[0];
-            float result = Circles.getArea(item[1]);
+            float result = Circles.GetArea(item[1]);
             Assert.Equal(expect, result);
         }
     }

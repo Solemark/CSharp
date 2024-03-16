@@ -1,7 +1,7 @@
 namespace ConsoleApps.SourceCode;
-public class SumArray
+public class Sum
 {
-    public static int sumArray(int[] array)
+    public static int Array(int[] array)
     {
         int total = 0;
         for (int i = 0; i <= array.Length; i++)
@@ -11,7 +11,7 @@ public class SumArray
         return total;
     }
 
-    public static int sumList(int[] list)
+    public static int List(int[] list)
     {
         int total = 0;
         for (int i = 0; i <= list.Length; i++)

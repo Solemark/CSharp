@@ -1,29 +1,16 @@
 namespace ConsoleApps.SourceCode;
 public class FizzBuzz
 {
-    public static string fizzBuzz(int fizz, int buzz, int max)
+    public static string Play(int fizz, int buzz, int max, int i = 1, string output = "")
     {
-        string output = "";
-        bool flag = false;
-        for (int i = 1; i <= max; i++)
+        if (i > max)
         {
-            flag = false;
-            if (0 == i % fizz)
-            {
-                flag = true;
-                output += "fizz";
-            }
-            if (0 == i % buzz)
-            {
-                flag = true;
-                output += "buzz";
-            }
-            if (!flag)
-            {
-                output += "" + i;
-            }
-            output += "\n";
+            return output;
         }
-        return output;
+        string nstr = "";
+        nstr += 0 == i % fizz ? "fizz" : "";
+        nstr += 0 == i % buzz ? "buzz" : "";
+        nstr += nstr == "" ? string.Format("{0}\n", i) : "\n";
+        return Play(fizz, buzz, max, i + 1, output + nstr);
     }
 }

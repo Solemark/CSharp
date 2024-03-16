@@ -1,8 +1,8 @@
 ﻿namespace ConsoleApps.SourceCode;
 public class Calculator
 {
-    public static float addition(float a, float b) { return a + b; }
-    public static float subtraction(float a, float b) { return a - b; }
-    public static float multiplication(float a, float b) { return a * b; }
-    public static float division(float a, float b) { return a / b; }
+    public static float Addition(float a, float b) { return a + b; }
+    public static float Subtraction(float a, float b) { return a - b; }
+    public static float Multiplication(float a, float b) { return a * b; }
+    public static float Division(float a, float b) { return a / b; }
 }

@@ -1,47 +1,28 @@
 namespace ConsoleApps.SourceCode;
 public class GachaRoll
 {
-    public static string gachaRoll(string game)
+    public static string Roll(string game)
     {
-        int rolls = 0;
-        int currentRoll = 0;
-        int rate = 0;
-        int pity = 0;
-        string rarity = "";
-
-        switch (game)
+        return game switch
         {
-            case "FGO":
-                rate = 100;
-                pity = 100;
-                rarity = "5*";
-                break;
-            case "AK":
-                rate = 50;
-                pity = 100;
-                rarity = "6*";
-                break;
-            case "GI":
-                rate = 60;
-                pity = 90;
-                rarity = "5*";
-                break;
-            default:
-                return "Unknown game!";
-        }
+            "FGO" => Play(100, 100, 5, "FGO"),
+            "AK" => Play(50, 100, 6, "AK"),
+            "GI" => Play(60, 90, 5, "GI"),
+            _ => "Unknown game!",
+        };
+    }
 
-        while (true)
+    private static string Play(int rate, int pity, int rarity, string game, int rolls = 0)
+    {
+        int roll = Random.Shared.Next(1, rate + 1);
+        if (roll == rate)
         {
-            rolls++;
-            currentRoll = Random.Shared.Next(1, rate + 1);
-            if (currentRoll == rate)
-            {
-                return String.Format("It took {0} rolls to get a {1} in {2}", rolls, rarity, game);
-            }
-            if (rolls == pity)
-            {
-                return String.Format("You hit pity at {0} rolls for your {1} in {2}", pity, rarity, game);
-            }
+            return string.Format("It took {0} rolls to get a {1} in {2}", rolls, rarity, game);
         }
+        if (rolls == pity)
+        {
+            return string.Format("You hit pity at {0} rolls for your {1} in {2}", pity, rarity, game);
+        }
+        return Play(rate, pity, rarity, game, rolls + 1);
     }
 }

@@ -1,18 +1,18 @@
 namespace ConsoleApps.Unittest;
 public class TestGachaRoll
 {
-    private string[] getData()
+    private static string[] GetData()
     {
-        return new string[] { "FGO", "AK", "GI" };
+        return ["FGO", "AK", "GI"];
     }
 
     [Fact]
-    public void testGachaRoll()
+    public void TestGachaRollGame()
     {
-        string[] data = getData();
+        string[] data = GetData();
         foreach (string item in data)
         {
-            string result = GachaRoll.gachaRoll(item);
+            string result = GachaRoll.Roll(item);
             Assert.Contains(item, result);
         }
     }

@@ -5,7 +5,7 @@ public class TestGetDateTime
     public void TestGetDayReturns22nd()
     {
         const string expect = "22nd";
-        string result = GetDateTime.getDay(22);
+        string result = GetDateTime.GetDay(22);
         Assert.Equal(expect, result);
     }
 
@@ -13,15 +13,22 @@ public class TestGetDateTime
     public void TestGetMonthReturnsApril()
     {
         const string expect = "April";
-        string result = GetDateTime.getMonth(4);
+        string result = GetDateTime.GetMonth(4);
         Assert.Equal(expect, result);
     }
 
     [Fact]
     public void TestGetCurrentDate()
     {
-        const string expect = "It is Thursday the 23rd of March, 2023";
-        string result = GetDateTime.checkDate();
+        DateTime date = DateTime.Now;
+        string expect = string.Format(
+            "It is {0} the {1} of {2}, {3}",
+            date.DayOfWeek,
+            GetDateTime.GetDay(date.Day),
+            GetDateTime.GetMonth(date.Month),
+            date.Year
+        );
+        string result = GetDateTime.CheckDate();
         Assert.Equal(expect, result);
     }
 }

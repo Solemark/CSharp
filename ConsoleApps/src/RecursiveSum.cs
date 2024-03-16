@@ -1,7 +1,7 @@
 namespace ConsoleApps.SourceCode;
 public class RecursiveSum
 {
-    public static int sumNumbers(int number, int total)
+    public static int Numbers(int number, int total)
     {
         if (number <= 0)
         {
@@ -10,11 +10,11 @@ public class RecursiveSum
         else
         {
             total += number;
-            return sumNumbers(number - 1, total);
+            return Numbers(number - 1, total);
         }
     }
 
-    public static int sumArray(int[] list, int number, int total)
+    public static int Array(int[] list, int number, int total)
     {
         if (number <= 0)
         {
@@ -23,7 +23,7 @@ public class RecursiveSum
         else
         {
             total += list[number - 1];
-            return sumArray(list, number - 1, total);
+            return Array(list, number - 1, total);
         }
     }
 }

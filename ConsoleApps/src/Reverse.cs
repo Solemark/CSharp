@@ -1,7 +1,7 @@
 namespace ConsoleApps.SourceCode;
-public class ReverseArray
+public class Reverse
 {
-    public static int[] reverseArray(int[] array)
+    public static int[] Array(int[] array)
     {
         int end = array.Length - 1;
         int x = 0;
@@ -16,7 +16,7 @@ public class ReverseArray
         return array;
     }
 
-    public static int[] reverseList(int[] list)
+    public static int[] List(int[] list)
     {
         int end = list.Length - 1;
         int x = 0;

@@ -5,7 +5,7 @@ public class TestSwapVariables
     public void TestSwapVariablesFunction()
     {
         (int, int) expect = (2, 1);
-        (int, int) result = SwapVariables.run(1, 2);
+        (int, int) result = SwapVariables.Swap(1, 2);
         Assert.Equal(expect, result);
     }
 }

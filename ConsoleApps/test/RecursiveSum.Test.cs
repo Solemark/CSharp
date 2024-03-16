@@ -5,16 +5,16 @@ public class TestRecursiveSum
     public void TestRecursiveSumNumbers()
     {
         int expect = 55;
-        int result = RecursiveSum.sumNumbers(10, 0);
+        int result = RecursiveSum.Numbers(10, 0);
         Assert.Equal(expect, result);
     }
 
     [Fact]
     public void TestRecursiveSumArray()
     {
-        int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         int expect = 55;
-        int result = RecursiveSum.sumArray(input, 10, 0);
+        int result = RecursiveSum.Array(input, 10, 0);
         Assert.Equal(expect, result);
     }
 }

@@ -5,7 +5,7 @@ public class TestRemoveCharacters
     public void TestRemoveCharactersFromString()
     {
         string expect = "HeoWord";
-        string result = RemoveCharacters.run("Hello World", new string[] { "l", " " });
+        string result = RemoveCharacters.Run("Hello World", ["l", " "]);
         Assert.Equal(expect, result);
     }
 }

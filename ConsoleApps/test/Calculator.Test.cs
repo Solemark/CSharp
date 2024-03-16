@@ -1,58 +1,58 @@
 namespace ConsoleApps.Unittest;
 public class TestCalculator
 {
-    private float[][] getTestData()
+    private static float[][] getTestData()
     {
-        return new float[][]{
-            new float[]{5, 5},
-            new float[]{5, -5},
-            new float[]{-5, -5}
-        };
+        return [
+            [5, 5],
+            [5, -5],
+            [-5, -5]
+        ];
     }
 
     [Fact]
-    public void testAddition()
+    public void TestAddition()
     {
         float[][] data = getTestData();
         foreach (var item in data)
         {
             float expect = item[0] + item[1];
-            float result = Calculator.addition(item[0], item[1]);
+            float result = Calculator.Addition(item[0], item[1]);
             Assert.Equal(expect, result);
         }
     }
     [Fact]
-    public void testSubtraction()
+    public void TestSubtraction()
     {
         float[][] data = getTestData();
         foreach (var item in data)
         {
             float expect = item[0] - item[1];
-            float result = Calculator.subtraction(item[0], item[1]);
+            float result = Calculator.Subtraction(item[0], item[1]);
             Assert.Equal(expect, result);
         }
     }
 
     [Fact]
-    public void testMultiplication()
+    public void TestMultiplication()
     {
         float[][] data = getTestData();
         foreach (var item in data)
         {
             float expect = item[0] * item[1];
-            float result = Calculator.multiplication(item[0], item[1]);
+            float result = Calculator.Multiplication(item[0], item[1]);
             Assert.Equal(expect, result);
         }
     }
 
     [Fact]
-    public void testDivision()
+    public void TestDivision()
     {
         float[][] data = getTestData();
         foreach (var item in data)
         {
             float expect = item[0] / item[1];
-            float result = Calculator.division(item[0], item[1]);
+            float result = Calculator.Division(item[0], item[1]);
             Assert.Equal(expect, result);
         }
     }
